@@ -1,0 +1,2 @@
+class NutrientDeficiency < ApplicationRecord
+end
