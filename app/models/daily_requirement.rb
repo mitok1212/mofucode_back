@@ -1,0 +1,2 @@
+class DailyRequirement < ApplicationRecord
+end
