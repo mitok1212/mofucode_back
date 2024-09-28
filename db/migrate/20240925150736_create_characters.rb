@@ -4,7 +4,7 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       #キャラクターの成長状況を保存
       t.references :user, foreign_key: true
       t.integer :growth_level, default: 1
-      t.integer :experience_points, default: 0
+      t.integer :not_star, default: 0
 
       t.timestamps
     end

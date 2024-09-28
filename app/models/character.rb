@@ -11,6 +11,9 @@ class Character < ApplicationRecord
             self.save  # 変更を保存
             puts "Growth level increased to #{self.growth_level}."
         else
+            #達成できなかった日数をカウント
+            self.not_star += 1
+            self.save
             puts "Nutrient deficiencies exist: Carbs: #{carbohydrates_deficiency}, Proteins: #{proteins_deficiency}, Fats: #{fats_deficiency}."
         end
     end
