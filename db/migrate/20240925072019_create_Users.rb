@@ -11,5 +11,7 @@ class CreateLogin1s < ActiveRecord::Migration[6.1]
       t.string :gender
       t.timestamps
     end
+    #emailにユニーク制約(重複をさせない)を追加
+    add_index :login1s, :email, unique: true
   end
 end

@@ -1,8 +1,9 @@
 class Nutrient < ApplicationRecord
     belongs_to :meal
+    belongs_to :user
     def set_default_requirements
         # 年齢、性別、体重、身長を基に1日の必要カロリーを計算
-        bmr = calculate_bmr(age, gender, weight, height)
+        bmr = calculate_bmr(user.age, user.gender, user.weight, user.height)
         
         # 必要カロリーの配分（炭水化物50-65%, タンパク質13-20%, 脂質20-30%）
         carbohydrates = (bmr * 0.58) / 4
