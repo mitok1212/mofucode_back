@@ -66,7 +66,7 @@ module Model
       JSON.parse(response.body)
     end
 
-    # APIからのレスポンスから栄養素情報を抽出
+    # APIからのレスポンスから栄養素情報を抽出 これいらないかも？
     def extract_nutrient_data(response_text)
       # レスポンスのテキストを解析して炭水化物、タンパク質、脂質を取得する（仮のパース方法）
       {

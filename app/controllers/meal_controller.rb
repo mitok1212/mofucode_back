@@ -1,5 +1,7 @@
 class MealController < ApplicationController
     before_action :authenticate_user!
+#レシピ考案のapi呼び出すコード追加する
+#キャラクター育成のレベル更新入れる(不足栄養素を更新辺りに入れられそう)
 
   # 朝食、昼食、夕食の選択フォームを表示
   def new

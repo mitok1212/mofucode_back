@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- #user_touroku_syori
+ #ユーザー登録処理
     def create
       @user = User.new(user_params)
       if @user.save

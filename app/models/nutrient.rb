@@ -13,13 +13,13 @@ class Nutrient < ApplicationRecord
         DailyRequirement.create(user: self, carbohydrates: carbohydrates, proteins: proteins, fats: fats)
         NutrientDeficiency.create(user: self)
         Character.create(user: self)
-      end
+    end
       
-      def calculate_bmr(age, gender, weight, height)
-        if gender == 'male'
-          88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)
-        else
-          447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)
-        end
+    def calculate_bmr(age, gender, weight, height)
+      if gender == 'male'
+        88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)
+      else
+        447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)
       end
+    end  
 end
