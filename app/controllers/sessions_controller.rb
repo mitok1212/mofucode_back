@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  #毎回のログイン処理
         def create
           user = User.find_by(email: params[:email])
           if user&.authenticate(params[:password])
