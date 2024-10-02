@@ -2,24 +2,25 @@ class Nutrient < ApplicationRecord
     belongs_to :meal
     belongs_to :user
     def set_default_requirements
-        # 年齢、性別、体重、身長を基に1日の必要カロリーを計算
-        bmr = calculate_bmr(user.age, user.gender, user.weight, user.height)
+        # 年齢、性別、体重、身長を基に1日の総消費カロリー(基礎代謝*1.2)を計算
+        tdee = calculate_tdee(user.age, user.gender, user.weight, user.height)
         
-        # 必要カロリーの配分（炭水化物50-65%, タンパク質13-20%, 脂質20-30%）
-        carbohydrates = (bmr * 0.58) / 4
-        proteins = (bmr * 0.17) / 4
-        fats = (bmr * 0.25) / 9
+        # 必要カロリーの配分（炭水化物50-65% 1g 4kcal, タンパク質13-20% 1g 4kcal, 脂質20-30% 1g 9kcal）
+        carbohydrates = (tdee * 0.58) / 4
+        proteins = (tdee * 0.17) / 4
+        fats = (tdee * 0.25) / 9
       
         DailyRequirement.create(user: self, carbohydrates: carbohydrates, proteins: proteins, fats: fats)
         NutrientDeficiency.create(user: self)
         Character.create(user: self)
     end
       
-    def calculate_bmr(age, gender, weight, height)
+    def calculate_tdee(age, gender, weight, height)
+      #ミフリンセイントジョー公式基礎代謝量(bmr)を求め、*1.2で総消費カロリー(ほぼ運動しない人)を求める
       if gender == 'male'
-        88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)
+        (-161 + (10 * weight) + (6.25 * height) - (5 * age) * 1.2)
       else
-        447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)
+        (5 + (10 * weight) + (6.25 * height) - (5 * age) * 1.2)
       end
     end  
 end
