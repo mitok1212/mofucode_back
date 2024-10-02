@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    # ユーザー登録、ログイン/ログアウト用のルート
+    resources :users, only: [:create]
+    resources :sessions, only: [:create, :destroy]
+  
+    # MealsController のルーティング
+    resources :meals, only: [:create] # 新しい食事を作成するアクション
+  
+    # RecipesController のルーティング
+    post 'recipes/recommend', to: 'recipes#recommend' # レシピを提案するアクション
+  
+  
 end
