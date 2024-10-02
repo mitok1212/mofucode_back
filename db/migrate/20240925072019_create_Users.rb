@@ -1,4 +1,4 @@
-class CreateLogin1s < ActiveRecord::Migration[6.1]
+class CreateUsers< ActiveRecord::Migration[6.1]
   def change
     create_table :login1s do |t|
       #ユーザーの基本情報やログインに関するデータを保存
