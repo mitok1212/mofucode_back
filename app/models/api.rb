@@ -27,11 +27,21 @@ module Model
       - 炭水化物: #{deficiencies[:carbohydrates]}グラム
       - タンパク質: #{deficiencies[:proteins]}グラム
       - 脂質: #{deficiencies[:fats]}グラム
-      これらの不足を補うためのレシピを5つ提案してください。
+      これらの不足を補うためのレシピを3つ提案してください。それぞれのレシピのタイトルと詳細な説明を記載してください。
       PROMPT
 
       response = call_chatgpt_api(prompt)
-      response['choices'].first['message']['content'].strip.split("\n")
+      response_text = response['choices'].first['message']['content'].strip
+      
+      # 改行で分割し、タイトルと内容をペアにする
+      recipes = recipes_text.split("\n\n").map do |recipe_block|
+        lines = recipe_block.split("\n")
+        title = lines[0] # 最初の行をタイトルとして扱う
+        content = lines[1..].join("\n") # 残りの行を内容として扱う
+        { title: title, content: content }
+      end
+
+      recipes
     end
 
     # 食べた料理名から一食分の栄養素を返すメソッド
