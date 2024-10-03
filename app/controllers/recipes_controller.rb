@@ -14,11 +14,15 @@ class RecipesController < ApplicationController
               proteins: deficiency.proteins_deficiency,
               fats: deficiency.fats_deficiency
             })
-      
+             # レシピのタイトルと内容をそれぞれ抽出して配列に格納
+            recipe_titles = recommended_recipes.map { |recipe| recipe[:title] }
+            recipe_contents = recommended_recipes.map { |recipe| recipe[:content] }
+
             # レシピをJSON形式でフロントエンドに返す
             render json: {
               message: "レシピの提案が完了しました",
-              recipes: recommended_recipes
+              recipe_titles : recipe_titles,
+              recipe_contents: recipe_contents 
             }, status: :ok
           else
             # 栄養不足データがない場合のエラーレスポンス
