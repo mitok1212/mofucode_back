@@ -14,6 +14,18 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+
+  ###付け足した###
+  # 許可するホストを追加 (localhostやngrokのドメインを例として)
+  #config.hosts << "localhost"
+  #config.hosts << "eb99-106-72-129-161.ngrok-free.app"
+  #config.hosts << /.*\.ngrok-free\.app/  # ngrok全体のドメインを許可するワイルドカード
+  config.hosts << "host.docker.internal:3000"
+  config.hosts << ".ngrok-free.app"
+#ここまで
+
+
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?

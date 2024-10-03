@@ -1,4 +1,16 @@
 services:
+  ngrok:
+        image: ngrok/ngrok:latest
+        restart: unless-stopped
+        command:
+          - "start"
+          - "--all"
+          - "--config"
+          - "/etc/ngrok.yml"
+        volumes:
+          - ./ngrok.yml:/etc/ngrok.yml
+        ports:
+          - 4040:4040
   #dbコンテナ
   db:
     image: mariadb:10.9

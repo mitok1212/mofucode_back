@@ -1,0 +1,8 @@
+version: "2"
+authtoken: 2mszzPk2c9JJGI3clCJ8ATvKJYj_4MfYFazzDBN8sZekQUSqC
+tunnels:
+  nginx:
+    proto: http
+    addr: host.docker.internal:3000 #ここに接続したいサービス
+    host_header: rewrite
+
