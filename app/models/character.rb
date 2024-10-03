@@ -1,6 +1,5 @@
 class Character < ApplicationRecord
     belongs_to :user
-    belongs_to :nutrient_deficiency
 
     # キャラクターの成長レベルを更新するメソッド
     def update_growth_level(nutrient_deficiencies)
