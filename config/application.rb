@@ -10,6 +10,16 @@ module MofucodeBack
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:3000'
+
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          #credentials: true  # クッキーを含む認証情報を許可する場合
+      end
+    end
     config.api_only = true
 
     # Configuration for the application, engines, and railties goes here.
