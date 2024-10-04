@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     # ユーザー登録、ログイン/ログアウト用のルート
-    resources :users, only: [:create]
+    resources :users, only: [:create, :index]
     resources :sessions, only: [:create, :destroy]
   
     # MealsController のルーティング
