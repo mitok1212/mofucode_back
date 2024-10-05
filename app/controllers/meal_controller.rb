@@ -15,13 +15,10 @@ class MealsController < ApplicationController
           nutrient_data = current_user.daily_requirement.update_nutrients(nutrients)
         end
 
-       
-  
         # 不足分を更新
-        if @daily_requirement.carbohydrates.present? && @daily_requirement.proteins.present? && @daily_requirement.fats.present?
+        if @nutrient_deficiency.carbohydrates.present? && @nutrient_deficiency.proteins.present? && @nutrient_deficiency.fats.present?
           current_user.nutrient_deficiency.update_deficiency(nutrient_data)
         end
-        
         
 
         # レスポンスをJSON形式でフロントエンドに返す
