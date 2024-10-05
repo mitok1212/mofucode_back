@@ -11,11 +11,19 @@ class MealsController < ApplicationController
         nutrients = Model::Api.new.calculate_nutrients(@meal.food_items)
   
         # ユーザーの栄養素データを更新
-        nutrient_data = current_user.nutrient.update_nutrients(nutrients)
+        if @daily_requirement.carbohydrates.present? && @daily_requirement.proteins.present? && @daily_requirement.fats.present?
+          nutrient_data = current_user.daily_requirement.update_nutrients(nutrients)
+        end
+
+       
   
         # 不足分を更新
-        current_user.nutrient_deficiency.update_deficiency(nutrient_data)
-  
+        if @daily_requirement.carbohydrates.present? && @daily_requirement.proteins.present? && @daily_requirement.fats.present?
+          current_user.nutrient_deficiency.update_deficiency(nutrient_data)
+        end
+        
+        
+
         # レスポンスをJSON形式でフロントエンドに返す
         render json: {
           message: "食事が保存されました",
