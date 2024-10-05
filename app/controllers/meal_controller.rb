@@ -11,12 +11,14 @@ class MealsController < ApplicationController
         nutrients = Model::Api.new.calculate_nutrients(@meal.food_items)
   
         # ユーザーの栄養素データを更新
-        if @daily_requirement.carbohydrates.present? && @daily_requirement.proteins.present? && @daily_requirement.fats.present?
+        daily_requirement = current_user.daily_requirement
+        if daily_requirement.carbohydrates.present? && daily_requirement.proteins.present? && daily_requirement.fats.present?
           nutrient_data = current_user.daily_requirement.update_nutrients(nutrients)
         end
 
         # 不足分を更新
-        if @nutrient_deficiency.carbohydrates.present? && @nutrient_deficiency.proteins.present? && @nutrient_deficiency.fats.present?
+        nutrient_deficiency = current_user.nutrient_deficiency
+        if nutrient_deficiency.carbohydrates.present? && nutrient_deficiency.proteins.present? && nutrient_deficiency.fats.present?
           current_user.nutrient_deficiency.update_deficiency(nutrient_data)
         end
         
