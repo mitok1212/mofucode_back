@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  protect_from_forgery # 追記
+  #protect_from_forgery # 追記
  #skip_before_action :verify_authenticity_token, only: [:create] # CSRFskip
  skip_before_action :authenticate_request, only: [:csrf_token]
  #user-touroku
