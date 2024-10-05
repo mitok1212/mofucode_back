@@ -12,7 +12,7 @@ module MofucodeBack
     config.load_defaults 6.1
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000'
+        origins 'http://10.0.2.2:3000'
 
         resource '*',
           headers: :any,
