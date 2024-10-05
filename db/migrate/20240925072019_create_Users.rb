@@ -6,8 +6,8 @@ class CreateUsers< ActiveRecord::Migration[6.1]
       t.string :email, null: false, unique: true
       t.string :password_digest, null: false
       t.integer :age
-      t.float :weight
-      t.float :height
+      t.float :double :weight
+      t.float :double :height
       t.string :gender
       t.timestamps
     end
