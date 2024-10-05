@@ -11,7 +11,7 @@ module MofucodeBack
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     # 例外をキャッチしてカスタムルーティングに委譲
-    config.exceptions_app = self.routes
+    
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'http://10.0.2.2:3000'
@@ -20,6 +20,7 @@ module MofucodeBack
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head]
           #credentials: true  #クッキーを含む認証情報を許可する場合
+          config.exceptions_app = self.routes
       end
     end
     config.api_only = true

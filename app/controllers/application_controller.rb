@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  protect_from_forgery with: :null_session #追加
+  #protect_from_forgery with: :null_session #追加
   before_action :authenticate_request
 
   private
