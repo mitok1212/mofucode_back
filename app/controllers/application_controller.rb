@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_request
+  protect_from_forgery with: :null_session #追加
+  before_action :authenticate_request
 
   private
 
