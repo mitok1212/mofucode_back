@@ -11,9 +11,8 @@ class Nutrient < ApplicationRecord
         fats = (tdee * 0.25) / 9
       
         DailyRequirement.create(user: user, carbohydrates: carbohydrates, proteins: proteins, fats: fats)
-NutrientDeficiency.create(user: user)
-Character.create(user: user)
-
+        NutrientDeficiency.create(user: user)
+        Character.create(user: user)
     end
       
     def calculate_tdee(age, gender, weight, height)
