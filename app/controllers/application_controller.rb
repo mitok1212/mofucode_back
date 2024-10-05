@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+"""class ApplicationController < ActionController::API
   before_action :authenticate_request
 
   private
@@ -20,12 +20,12 @@ class ApplicationController < ActionController::API
       render json: { error: 'User not found' }, status: :unauthorized
     end
   end
-end
+end"""
 
 
 
 
-"""class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base
   #protect_from_forgery with: :null_session #追加
   before_action :authenticate_request
 
@@ -40,4 +40,4 @@ end
       render json: { error: 'Unauthorized' }, status: :unauthorized
     end
   end
-end"""
+end
