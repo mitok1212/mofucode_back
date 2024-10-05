@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create] # CSRFトークンの検証をスキップ
- #ユーザー登録処理
+ #skip_before_action :verify_authenticity_token, only: [:create] # CSRFskip
+ skip_before_action :authenticate_request, only: [:csrf_token]
+ #user-touroku
     def create
       @user = User.new(user_params)
       if @user.save
@@ -10,6 +11,11 @@ class UsersController < ApplicationController
       else
         render json: @user.errors, status: :unprocessable_entity
       end
+    end
+
+    #CSRFtoken
+    def csrf_token
+      render json: { csrf_token: form_authenticity_token }
     end
   
     private
