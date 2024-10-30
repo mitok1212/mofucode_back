@@ -12,11 +12,11 @@ module MofucodeBack
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://10.0.2.2:3000'
+        origins 'http://localhost:54593/'
         resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], max_age: 7200
       end
     end
 
-    # other configurations
+    config.autoload_paths << Rails.root.join('app/lib') # app/libも追加
   end
 end
