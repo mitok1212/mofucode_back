@@ -1,4 +1,4 @@
-class ApplicationRecord < ActiveRecord::Api
+class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
   #rbファイル
 end

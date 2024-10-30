@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
       
           # 不足している栄養素の情報をChatGPT APIに渡してレシピを提案
           if deficiency
-            api_client = Model::Api.new
+            api_client = RecipeApi::Api.new
             recommended_recipes = api_client.recommend_recipes({
               carbohydrates: deficiency.carbohydrates_deficiency,
               proteins: deficiency.proteins_deficiency,
