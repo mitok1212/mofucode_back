@@ -8,7 +8,7 @@ class MealsController < ApplicationController
   
       if @meal.save
         # ChatGPT API で食事データから栄養素を計算
-        nutrients = Model::Api.new.calculate_nutrients(@meal.food_items)
+        nutrients = RecipeApi.new.calculate_nutrients(@meal.food_items)
   
         # ユーザーの栄養素データを更新
         daily_requirement = current_user.daily_requirement
